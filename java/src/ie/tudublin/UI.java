@@ -18,6 +18,7 @@ public class UI extends PApplet
     public void setup()
     {
         renderables = new ArrayList<>();
+        renderables.add(new DotGrid(this));
         renderables.add(new Button(this));
     }
 
