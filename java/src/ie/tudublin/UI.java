@@ -7,19 +7,28 @@ import processing.core.PApplet;
 public class UI extends PApplet
 {
     private List<Renderable> renderables;
+    private List<Clickable> clickables;
 
     public void settings()
     {
-        size(600, 600);
+        size(1000, 600);
         // Use fullscreen instead of size to make your interface fullscreen
-        //fullScreen(P3D); 
+        //fullScreen(); 
     }
 
     public void setup()
     {
+        frameRate(60);
+
         renderables = new ArrayList<>();
+        clickables = new ArrayList<>();
+
+        Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart");
+
         renderables.add(new DotGrid(this));
-        renderables.add(new Button(this));
+        renderables.add(btnBarChart);
+
+        clickables.add(btnBarChart);
     }
 
     public void draw()
@@ -30,6 +39,14 @@ public class UI extends PApplet
         for(Renderable renderable : renderables) {
             renderable.update();
             renderable.render();
+        }
+    }
+
+    public void mouseClicked() {
+        for(Clickable clickable : clickables) {
+            if(clickable.isClicked()) {
+                clickable.onClick();
+            }
         }
     }
 }
