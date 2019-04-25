@@ -22,6 +22,10 @@ public class Button implements Renderable, Clickable {
 
     @Override
     public boolean isClicked() {
+        if(ui.mousePressed) {
+            return (ui.mouseX > pos.x && ui.mouseX < pos.x + w &&
+                    ui.mouseY > pos.y && ui.mouseY < pos.y + h);     
+        }
         return false;
     }
 
@@ -37,7 +41,7 @@ public class Button implements Renderable, Clickable {
 
     @Override
     public void render() {
-        ui.fill(0, 255, 0);
+        ui.fill(0, 150, 0);
         ui.rect(pos.x, pos.y, w, h);
         ui.fill(255);
         ui.textAlign(ui.CENTER, ui.CENTER);
