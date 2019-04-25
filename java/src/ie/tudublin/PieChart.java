@@ -21,6 +21,10 @@ public class PieChart implements Renderable {
 
     @Override
     public void render() {
+        ui.fill(0, 0, 100, 50);
+        ui.rect(pos.x, pos.y, w, h);
 
+        
+        ui.ellipse(w / 2, h / 2, w - 100, h - 100);
     }
 }
