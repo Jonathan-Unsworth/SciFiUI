@@ -15,7 +15,7 @@ public class Button implements Renderable, Clickable {
         this.ui = ui;
         pos = new PVector(x, y);
         this.w = w;
-        this.h = y;
+        this.h = h;
     }
 
     @Override
