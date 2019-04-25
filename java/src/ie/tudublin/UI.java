@@ -23,7 +23,8 @@ public class UI extends PApplet
         renderables = new ArrayList<>();
         clickables = new ArrayList<>();
 
-        Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart");
+        Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart",
+                             new BarChart(this, 10, 10, width - 20, height - 100));
 
         renderables.add(new DotGrid(this));
         renderables.add(btnBarChart);
