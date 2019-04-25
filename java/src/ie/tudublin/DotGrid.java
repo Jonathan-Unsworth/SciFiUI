@@ -1,10 +1,14 @@
 package ie.tudublin;
 
+import processing.core.PVector;
+
 public class DotGrid implements Renderable {
     private UI ui;
+    private PVector pos;
 
     public DotGrid(UI ui) {
         this.ui = ui;
+        pos = new PVector();
     }
 
     @Override
@@ -15,9 +19,9 @@ public class DotGrid implements Renderable {
     @Override
     public void render() {
         ui.fill(255, 0, 0);
-        for(int i = 10; i < ui.width; i += 10) {
-            for(int j = 10; j < ui.height; j += 10) {
-                ui.ellipse(i, j, 2, 2);
+        for(pos.x = 10; pos.x < ui.width; pos.x += 10) {
+            for(pos.y = 10; pos.y < ui.height; pos.y += 10) {
+                ui.ellipse(pos.x, pos.y, 2, 2);
             }
         }
     }
