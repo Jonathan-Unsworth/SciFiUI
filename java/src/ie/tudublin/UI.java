@@ -24,12 +24,17 @@ public class UI extends PApplet
         clickables = new ArrayList<>();
 
         Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart",
-                             new BarChart(this, 10, 10, width - 20, height - 100));
+                                        new BarChart(this, 10, 10, width - 20, height - 100));
+
+        Button btnPieChart = new Button(this, (width / 3) - 50, height - 70, 100, 50, "Pie Chart",
+                                        new PieChart(this, 10, 10, width -20, height - 100));
 
         renderables.add(new DotGrid(this));
         renderables.add(btnBarChart);
+        renderables.add(btnPieChart);
 
         clickables.add(btnBarChart);
+        clickables.add(btnPieChart);
     }
 
     public void draw()
