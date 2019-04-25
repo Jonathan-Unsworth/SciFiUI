@@ -7,6 +7,10 @@ public class Button implements Renderable, Clickable {
     private PVector pos;
     private float w, h;
 
+    public Button(UI ui) {
+        this(ui, ui.width / 2, ui.height / 2, 100, 100);
+    }
+
     public Button(UI ui, float x, float y, float w, float h) {
         this.ui = ui;
         pos = new PVector(x, y);
