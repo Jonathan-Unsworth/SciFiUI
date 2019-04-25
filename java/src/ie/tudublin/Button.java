@@ -7,6 +7,13 @@ public class Button implements Renderable, Clickable {
     private PVector pos;
     private float w, h;
 
+    public Button(UI ui, float x, float y, float w, float h) {
+        this.ui = ui;
+        pos = new PVector(x, y);
+        this.w = w;
+        this.h = y;
+    }
+
     @Override
     public boolean isClicked() {
         return false;
