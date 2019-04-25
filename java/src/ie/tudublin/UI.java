@@ -42,7 +42,7 @@ public class UI extends PApplet
         }
     }
 
-    public void mouseClicked() {
+    public void mousePressed() {
         for(Clickable clickable : clickables) {
             if(clickable.isClicked()) {
                 clickable.onClick();
