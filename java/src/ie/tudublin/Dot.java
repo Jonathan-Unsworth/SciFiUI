@@ -45,6 +45,7 @@ public class Dot implements Renderable {
 
     @Override
     public void render() {
+        ui.fill(255);
         ui.ellipse(pos.x, pos.y, w, h);
     }
 
