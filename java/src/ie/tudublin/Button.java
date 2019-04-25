@@ -35,7 +35,8 @@ public class Button implements Renderable, Clickable {
 
     @Override
     public void render() {
-
+        ui.fill(0, 255, 0);
+        ui.rect(pos.x, pos.y, w, h);
     }
     
 }
