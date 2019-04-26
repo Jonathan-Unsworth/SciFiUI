@@ -17,6 +17,13 @@ public class Dot implements Renderable {
         pos = new PVector(x, y);
     }
 
+    public Dot(UI ui, float x, float y, float w, float h) {
+        this.ui = ui;
+        pos = new PVector(x, y);
+        this. w = w;
+        this.h = h;
+    }
+
     @Override
     public void update() {
         w = PApplet.dist(pos.x, pos.y, ui.mouseX, ui.mouseY);
