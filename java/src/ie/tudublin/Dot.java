@@ -56,4 +56,12 @@ public class Dot implements Renderable {
         ui.ellipse(pos.x, pos.y, w, h);
     }
 
+    public float getX() {
+        return pos.x;
+    }
+
+    public float getY() {
+        return pos.y;
+    }
+
 }
