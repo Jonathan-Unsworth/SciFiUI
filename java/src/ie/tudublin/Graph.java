@@ -40,8 +40,17 @@ public class Graph implements Renderable {
 
     @Override
     public void render() {
-        for(Dot node : nodes) {
-            node.render();
+        for(int i = 0; i < nodes.size(); i++)
+        {
+            ui.stroke(255, 0, 0);
+            if(i + 1 == nodes.size()) {
+                ui.noStroke();
+                nodes.get(i).render();
+                break;
+            }
+            ui.line(nodes.get(i).getX(), nodes.get(i).getY(), nodes.get(i + 1).getX(), nodes.get(i + 1).getY());
+            ui.noStroke();
+            nodes.get(i).render();
         }
     }
     
