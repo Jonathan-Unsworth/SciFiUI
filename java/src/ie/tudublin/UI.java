@@ -29,12 +29,17 @@ public class UI extends PApplet
         Button btnPieChart = new Button(this, (width / 3) - 50, height - 70, 100, 50, "Pie Chart",
                                         new PieChart(this, 10, 10, width -20, height - 100));
 
+        Button btnGraph = new Button(this, (width / 6) - 50, height - 70, 100, 50, "Graph",
+                          new PieChart(this, 10, 10, width -20, height - 100));
+
         renderables.add(new DotGrid(this));
         renderables.add(btnBarChart);
         renderables.add(btnPieChart);
+        renderables.add(btnGraph);
 
         clickables.add(btnBarChart);
         clickables.add(btnPieChart);
+        clickables.add(btnGraph);
     }
 
     public void draw()
