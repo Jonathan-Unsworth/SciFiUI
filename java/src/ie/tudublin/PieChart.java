@@ -25,6 +25,14 @@ public class PieChart implements Renderable {
         ui.rect(pos.x, pos.y, w, h);
 
         
-        ui.ellipse(w / 2, h / 2, w - 100, h - 100);
+        ui.ellipse(w / 2, h / 2, w - 500, h - 100);
+        ui.fill(255, 0, 0);
+        ui.arc(w / 2, h / 2, w - 500, h - 100, ui.PI + ui.QUARTER_PI, ui.TWO_PI);
+        ui.fill(0, 255, 0);
+        ui.arc(w / 2, h / 2, w - 500, h - 100, ui.PI, ui.PI + ui.QUARTER_PI);
+        ui.fill(0, 255, 255);
+        ui.arc(w / 2, h / 2, w - 500, h - 100, ui.HALF_PI, ui.PI);
+        ui.fill(255, 255, 0);
+        ui.arc(w / 2, h / 2, w - 500, h - 100, 0, ui.HALF_PI);
     }
 }
