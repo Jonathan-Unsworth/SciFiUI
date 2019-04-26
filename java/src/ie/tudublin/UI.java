@@ -30,7 +30,7 @@ public class UI extends PApplet
                                         new PieChart(this, 10, 10, width -20, height - 100));
 
         Button btnGraph = new Button(this, (width / 6) - 50, height - 70, 100, 50, "Graph",
-                          new PieChart(this, 10, 10, width -20, height - 100));
+                          new Graph(this, 10, 10, width -20, height - 100, "./data/graph.csv"));
 
         renderables.add(new DotGrid(this));
         renderables.add(btnBarChart);
