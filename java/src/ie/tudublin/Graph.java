@@ -11,7 +11,7 @@ public class Graph implements Renderable {
     private PVector pos;
     private float w, h;
     String path;
-    private List<Dot> graphNodes;
+    private List<Dot> nodes;
 
     public Graph(UI ui, float x, float y, float w, float h, String path) {
         this.ui = ui;
@@ -20,13 +20,16 @@ public class Graph implements Renderable {
         this.h = h;
         this.path = path;
 
-        graphNodes = new ArrayList<>();
+        nodes = new ArrayList<>();
         Table table = ui.loadTable(path, "header");
     
         for(TableRow row : table.rows()) {
             float xCord = row.getFloat("x");
             float yCord = row.getFloat("y");
-            graphNodes.add(new Dot(ui, xCord, yCord));
+            float width = row.getFloat("w");
+            float height = row.getFloat("h");
+
+            nodes.add(new Dot(ui, xCord, yCord, width, height));
         }
     }
 
@@ -37,7 +40,9 @@ public class Graph implements Renderable {
 
     @Override
     public void render() {
-
+        for(Dot node : nodes) {
+            node.render();
+        }
     }
     
 }
