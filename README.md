@@ -16,7 +16,7 @@ I decided that my version of this assignment would be an interface that would re
 # Instructions
 When the program begins the user is presented with three buttons which can pressed.
 Each button is labelled with it's functionality, one for a barchart, another for a piechart and yet another for a graph.
-Pressing said button will have it appear on the screen. Prsseing it again will make it disappear.
+Pressing said button will have it appear on the screen. Presseing it again will make it disappear.
 
 # How it works
 Simply put, I relied heavily on polymorphism to realise my goals in this assignment.
@@ -98,6 +98,72 @@ public class UI extends PApplet
     }
 }
 ```
+I decided I wanted the background to be visually composed of white circles which changes size based on their distance to the mouse cusor, closer circles are bigger. To achieve this I used 2 classes, dot and dotGrid. Dot is used, as it name suggests, to compose a dot as seen in the code snippet below.
+
+```Java
+@Override
+    public void update() {
+        w = PApplet.dist(pos.x, pos.y, ui.mouseX, ui.mouseY);
+        h = PApplet.dist(pos.x, pos.y, ui.mouseX, ui.mouseY);
+
+        if(w > 100 && h > 100) {
+            w = 1;
+            h = 1;
+        } else if(w > 80 && h > 80) {
+            w = 2;
+            h = 2;
+        } else if(w > 60 && h > 60) {
+            w = 3;
+            h = 3;
+        }  else if(w > 40 && h > 40) {
+            w = 4;
+            h = 4;
+        } else if(w > 20 && h > 20) {
+            w = 5;
+            h = 5;
+        } else {
+            w = 6;
+            h = 6;
+        }
+    }
+
+    @Override
+    public void render() {
+        ui.fill(255);
+        ui.ellipse(pos.x, pos.y, w, h);
+    }
+```
+
+For the Graph class I read in the coordinates of the nodes from a .csv file and 
+
+DotGrid renders the dots across the whole screen. To do this it takes in an ArrayList of Dots and simply calls the render method of the dot.
+
+```Java
+public DotGrid(UI ui) {
+        this.ui = ui;
+        dots = new ArrayList<>();
+
+        for(int i = 10; i < ui.width; i += 10) {
+            for(int j = 10; j < ui.height; j += 10) {
+                dots.add(new Dot(ui, i, j));
+            }
+        }
+    }
+
+    @Override
+    public void update() {
+        for(Dot dot : dots) {
+            dot.update();
+        }
+    }
+
+    @Override
+    public void render() {
+        for(Dot dot : dots) {
+            dot.render();
+        }
+    }
+```
 
 # What I am most proud of in the assignment
 
@@ -127,7 +193,7 @@ This is code:
 ```Java
 public void render()
 {
-	ui.noFill();
+	ui.noFill()
 	ui.stroke(255);
 	ui.rect(x, y, width, height);
 	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
