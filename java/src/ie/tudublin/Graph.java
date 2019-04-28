@@ -35,7 +35,7 @@ public class Graph implements Renderable {
 
     @Override
     public void update() {
-
+        
     }
 
     @Override
@@ -53,5 +53,4 @@ public class Graph implements Renderable {
             nodes.get(i).render();
         }
     }
-    
 }
