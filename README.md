@@ -1,12 +1,17 @@
 # SciFi UI Project
 
-Name:Jonathan Unsworth
+Name: Jonathan Unsworth
 
-Student Number:C17718415
+Student Number: C17718415
 
-Fork this repository and use it a starter project for your assignment
+class: DT228 - 2
 
 # Description of the assignment
+The aim of this assignment is to development a visual interface for a SciFi user interface.
+To achieve this goal the Java programming language and the processing environment are in used in tandem.
+OOP Paradigms such as inheritence and polymorphism are used to create the interface.
+
+I decided that my version of this assignment would be an interface that would relay visual information through a graph, a barchart and a piechart. My aim was to develop something you would expect to find on a ship like on Star Trek.
 
 # Instructions
 
