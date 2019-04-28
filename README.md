@@ -132,9 +132,7 @@ I decided I wanted the background to be visually composed of white circles which
         ui.fill(255);
         ui.ellipse(pos.x, pos.y, w, h);
     }
-```
-
-For the Graph class I read in the coordinates of the nodes from a .csv file and 
+``` 
 
 DotGrid renders the dots across the whole screen. To do this it takes in an ArrayList of Dots and simply calls the render method of the dot.
 
@@ -164,6 +162,31 @@ public DotGrid(UI ui) {
         }
     }
 ```
+
+For the Graph class I read in the coordinates of the nodes from a .csv file and then assigned the coordinates to a dot class, in the constructor, and used dots to represent nodes.
+
+```Java
+public Graph(UI ui, float x, float y, float w, float h, String path) {
+        this.ui = ui;
+        pos = new PVector(x, y);
+        this.w = w;
+        this.h = h;
+        this.path = path;
+
+        nodes = new ArrayList<>();
+        Table table = ui.loadTable(path, "header");
+    
+        for(TableRow row : table.rows()) {
+            float xCord = row.getFloat("x");
+            float yCord = row.getFloat("y");
+            float width = row.getFloat("w");
+            float height = row.getFloat("h");
+
+            nodes.add(new Dot(ui, xCord, yCord, width, height));
+        }
+    }
+```
+Rendering the Barchart and Piechart were simple affairs I simply had them implement the renderable interface and then gave each their own implementation of renderable.
 
 # What I am most proud of in the assignment
 
