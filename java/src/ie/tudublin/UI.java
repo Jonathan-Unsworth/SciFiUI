@@ -15,7 +15,7 @@ public class UI extends PApplet
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(); 
     }
-
+    
     public void setup()
     {
         frameRate(60);
@@ -36,6 +36,7 @@ public class UI extends PApplet
         renderables.add(btnBarChart);
         renderables.add(btnPieChart);
         renderables.add(btnGraph);
+        renderables.add(new Cursor(this));
 
         clickables.add(btnBarChart);
         clickables.add(btnPieChart);
