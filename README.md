@@ -1,16 +1,103 @@
 # SciFi UI Project
 
-Name:
+Name: Jonathan Unsworth
 
-Student Number: 
+Student Number: C17718415
 
-Fork this repository and use it a starter project for your assignment
+class: DT228 - 2
 
 # Description of the assignment
+The aim of this assignment is to development a visual interface for a SciFi user interface.
+To achieve this goal the Java programming language and the processing environment are in used in tandem.
+OOP Paradigms such as inheritence and polymorphism are used to create the interface.
+
+I decided that my version of this assignment would be an interface that would relay visual information through a graph, a barchart and a piechart. My aim was to develop something you would expect to find on a ship like on Star Trek.
 
 # Instructions
+When the program begins the user is presented with three buttons which can pressed.
+Each button is labelled with it's functionality, one for a barchart, another for a piechart and yet another for a graph.
+Pressing said button will have it appear on the screen. Prsseing it again will make it disappear.
 
 # How it works
+Simply put, I relied heavily on polymorphism to realise my goals in this assignment.
+I created two interfaces, Renderable and Clickable, as their names suggest they are responsible for rendering objects and clicking on objects respectively.
+
+```Java
+public interface Renderable {
+    void update();
+    void render();
+}
+```
+
+```Java
+public interface Clickable {
+    boolean isClicked();
+    void onClick();
+}
+```
+
+I had the Button class inherit from both interfaces. This allowed me to use 2 ArrayLists to store the button. One array list for rendering it and another for making it interactable. This meant I could just cycle through the array lists for the buttons in the render method and mousePressed method. I achieved button functionality by passing in a renderable object as a parameter for the button class, this allows for button that have different functionality when pressed by the user.
+
+```Java
+public class UI extends PApplet
+{
+    private List<Renderable> renderables;
+    private List<Clickable> clickables;
+
+    public void settings()
+    {
+        size(1000, 600);
+        // Use fullscreen instead of size to make your interface fullscreen
+        //fullScreen(); 
+    }
+    
+
+    public void setup()
+    {
+        frameRate(60);
+
+        renderables = new ArrayList<>();
+        clickables = new ArrayList<>();
+
+        Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart",
+                                        new BarChart(this, 10, 10, width - 20, height - 100));
+
+        Button btnPieChart = new Button(this, (width / 3) - 50, height - 70, 100, 50, "Pie Chart",
+                                        new PieChart(this, 10, 10, width -20, height - 100));
+
+        Button btnGraph = new Button(this, (width / 6) - 50, height - 70, 100, 50, "Graph",
+                          new Graph(this, 10, 10, width -20, height - 100, "./data/graph.csv"));
+
+        renderables.add(new DotGrid(this));
+        renderables.add(btnBarChart);
+        renderables.add(btnPieChart);
+        renderables.add(btnGraph);
+
+        clickables.add(btnBarChart);
+        clickables.add(btnPieChart);
+        clickables.add(btnGraph);
+    }
+
+    public void draw()
+    {
+        background(0);
+        
+        // Render Phase
+        for(Renderable renderable : renderables) {
+            renderable.update();
+            renderable.render();
+        }
+    }
+
+    public void mousePressed() {
+        for(Clickable clickable : clickables) {
+            if(clickable.isClicked()) {
+                clickable.onClick();
+            }
+        }
+    }
+}
+```
 
 # What I am most proud of in the assignment
 
