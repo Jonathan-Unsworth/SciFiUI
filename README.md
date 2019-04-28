@@ -36,7 +36,7 @@ public interface Clickable {
 }
 ```
 
-I had the Button class inherit from both interfaces. This allowed me to use 2 ArrayLists to store the button. One array list for rendering it and another for making it interactable. This meant I could just cycle through the array lists for the buttons in the render method and mousePressed method. I achieved button functionality by passing in a renderable object as a parameter for the button class, this allows for button that have different functionality when pressed by the user.
+This allowed me use 2 ArrayLists, one for renderables and another for clickables, to store each respectively. This way I could just cycle through each list with a foreach loop to render everything to screen, and apply functionality to certain objects on screen with the mousePressed method.
 
 ```Java
 public class UI extends PApplet
@@ -51,7 +51,6 @@ public class UI extends PApplet
         //fullScreen(); 
     }
     
-
     public void setup()
     {
         frameRate(60);
@@ -72,6 +71,7 @@ public class UI extends PApplet
         renderables.add(btnBarChart);
         renderables.add(btnPieChart);
         renderables.add(btnGraph);
+        renderables.add(new Cursor(this));
 
         clickables.add(btnBarChart);
         clickables.add(btnPieChart);
