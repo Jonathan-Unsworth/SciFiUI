@@ -1,8 +1,8 @@
 # SciFi UI Project
 
-Name:
+Name:Jonathan Unsworth
 
-Student Number: 
+Student Number:C17718415
 
 Fork this repository and use it a starter project for your assignment
 
