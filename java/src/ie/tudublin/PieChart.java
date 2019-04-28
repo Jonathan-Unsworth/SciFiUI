@@ -16,7 +16,7 @@ public class PieChart implements Renderable {
 
     @Override
     public void update() {
-
+        
     }
 
     @Override
