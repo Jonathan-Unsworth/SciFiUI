@@ -36,7 +36,7 @@ public interface Clickable {
 }
 ```
 
-I had the Button class inherit from both interfaces. This allowed me to use 2 ArrayLists to store the button. One array list for rendering it and another for making it interactable. This meant I could just cycle through the array lists for the button's in the render method and mousePressed method.
+I had the Button class inherit from both interfaces. This allowed me to use 2 ArrayLists to store the button. One array list for rendering it and another for making it interactable. This meant I could just cycle through the array lists for the buttons in the render method and mousePressed method. I achieved button functionality by passing in a renderable object as a parameter for the button class, this allows for button that have different functionality when pressed by the user.
 
 ```Java
 public class UI extends PApplet
