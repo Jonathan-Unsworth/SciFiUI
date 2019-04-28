@@ -188,7 +188,7 @@ public Graph(UI ui, float x, float y, float w, float h, String path) {
 ```
 Rendering the Barchart and Piechart were simple affairs I simply had them implement the renderable interface and then gave each their own implementation of renderable.
 
-![YouTube](https://www.youtube.com/watch?v=Ybe2vl6wsLs&feature=youtu.be)
+![YouTube](http://img.youtube.com/vi/Ybe2vl6wsLs/0.jpg)](https://www.youtube.com/watch?v=Ybe2vl6wsLs&feature=youtu.be)
 
 # What I am most proud of in the assignment
 I am very proud of my personal growth in this assignment. I feel my understanding of OOP concepts, such as inheritence and polymorphism really grew throughout the course of this project. I really liked how I used 2 ArrayList to provide render and functionality for buttons.
