@@ -20,7 +20,7 @@ public class Dot implements Renderable {
     public Dot(UI ui, float x, float y, float w, float h) {
         this.ui = ui;
         pos = new PVector(x, y);
-        this. w = w;
+        this.w = w;
         this.h = h;
     }
 
