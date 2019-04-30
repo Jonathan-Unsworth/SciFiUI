@@ -35,14 +35,21 @@ public class Graph implements Renderable {
             float width = row.getFloat("w");
             float height = row.getFloat("h");
 
-            // adds a Dot object to the node ArrayList with values taken from file
+            // Adds a Dot object to the node ArrayList with values taken from file
             nodes.add(new Dot(ui, xCord, yCord, width, height));
         }
     }
 
     @Override
     public void update() {
-        
+        for(Dot node : nodes) {
+            if(ui.mouseX > node.getX() && ui.mouseX < node.getX() + node.getW() &&
+               ui.mouseY > node.getY() && ui.mouseY < node.getY() + node.getH()) {
+                  float r = ui.random(10, 100);
+                  node.setW(r);
+                  node.setH(r);  
+           }
+        }
     }
 
     @Override
