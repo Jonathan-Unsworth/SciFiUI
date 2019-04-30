@@ -20,6 +20,7 @@ public class UI extends PApplet
     {
         frameRate(60);
 
+        // One ArrayList for renderable objects, another or clickable objects
         renderables = new ArrayList<>();
         clickables = new ArrayList<>();
 
