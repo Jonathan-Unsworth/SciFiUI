@@ -69,4 +69,20 @@ public class Dot implements Renderable {
         return pos.y;
     }
 
+    public void setW(float w) {
+        this.w = w;
+    }
+
+    public void setH(float h) {
+        this.h = h;
+    }
+
+    public float getW() {
+        return this.w;
+    }
+
+    public float getH() {
+        return this.h;
+    }
+
 }
