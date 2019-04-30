@@ -4,19 +4,23 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Dot implements Renderable {
+    // Fields
     private UI ui;
     private PVector pos;
     private float w, h;
 
+    // Constructor
     public Dot(UI ui) {
         this(ui, 10, 10);
     }
 
+    // Constructor for Dot background
     public Dot(UI ui, float x, float y) {
         this.ui = ui;
         pos = new PVector(x, y);
     }
 
+    // Constructor for nodes in graph
     public Dot(UI ui, float x, float y, float w, float h) {
         this.ui = ui;
         pos = new PVector(x, y);
@@ -24,6 +28,7 @@ public class Dot implements Renderable {
         this.h = h;
     }
 
+    // Makes Dots closer to the mouse cursor bigger
     @Override
     public void update() {
         w = PApplet.dist(pos.x, pos.y, ui.mouseX, ui.mouseY);
