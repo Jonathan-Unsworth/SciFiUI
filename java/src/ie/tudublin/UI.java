@@ -28,10 +28,10 @@ public class UI extends PApplet
         Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart",
                                         new BarChart(this, 10, 10, width - 20, height - 100));
 
-        Button btnPieChart = new Button(this, (width / 3) - 50, height - 70, 100, 50, "Pie Chart",
+        Button btnPieChart = new Button(this, (width / 4) - 50, height - 70, 100, 50, "Pie Chart",
                                         new PieChart(this, 10, 10, width -20, height - 100));
 
-        Button btnGraph = new Button(this, (width / 6) - 50, height - 70, 100, 50, "Graph",
+        Button btnGraph = new Button(this, (width / 2 + (width / 4)) - 50, height - 70, 100, 50, "Graph",
                           new Graph(this, 10, 10, width -20, height - 100, "./data/graph.csv"));
 
         // Adding renderable objects to renderables ArrayList
