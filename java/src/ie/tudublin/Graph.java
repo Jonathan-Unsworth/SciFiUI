@@ -47,6 +47,10 @@ public class Graph implements Renderable {
 
     @Override
     public void render() {
+        // Transparent background
+        ui.fill(255, 255, 0, 50);
+        ui.rect(pos.x, pos.y, w, h);
+
         for(int i = 0; i < nodes.size(); i++)
         {
             ui.stroke(255, 0, 0);
