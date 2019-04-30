@@ -1,10 +1,12 @@
 package ie.tudublin;
 
 public class Cursor implements Renderable {
+    // Fields
     private UI ui;
     private float velocity = 0.01f; 
     private float spin = 0; 
     
+    // Constructor
     public Cursor(UI ui) {
         this.ui = ui;
     }
@@ -16,6 +18,7 @@ public class Cursor implements Renderable {
 
     @Override
     public void render() {
+        // Adds a Triangle that rotates around the mouse cursor
         ui.fill(0, 255, 0);
         spin += velocity; 
         ui.pushMatrix(); 
