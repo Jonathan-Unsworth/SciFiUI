@@ -3,10 +3,12 @@ package ie.tudublin;
 import processing.core.PVector;
 
 public class PieChart implements Renderable {
+    // Fields
     UI ui;
     private PVector pos;
     private float w, h;
 
+    // Constructor
     public PieChart(UI ui, float x, float y, float w, float h) {
         this.ui = ui;
         pos = new PVector(x, y);
@@ -21,9 +23,11 @@ public class PieChart implements Renderable {
 
     @Override
     public void render() {
+        // Transparent background
         ui.fill(0, 0, 100, 50);
         ui.rect(pos.x, pos.y, w, h);
 
+        // PieChart
         ui.fill(255, 0, 0);
         ui.arc(w / 2, h / 2, w - 500, h - 100, ui.PI + ui.QUARTER_PI, ui.TWO_PI);
         ui.fill(255, 0, 255);
