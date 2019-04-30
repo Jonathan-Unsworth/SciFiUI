@@ -7,12 +7,14 @@ import processing.data.Table;
 import processing.data.TableRow;
 
 public class Graph implements Renderable {
+    // Fields
     private UI ui;
     private PVector pos;
     private float w, h;
-    String path;
+    private String path;
     private List<Dot> nodes;
 
+    // Constructor
     public Graph(UI ui, float x, float y, float w, float h, String path) {
         this.ui = ui;
         pos = new PVector(x, y);
@@ -20,15 +22,20 @@ public class Graph implements Renderable {
         this.h = h;
         this.path = path;
 
+        // Allocating memory for nodes ArrayList
         nodes = new ArrayList<>();
+
+        // Loads table from file
         Table table = ui.loadTable(path, "header");
     
+        // Assigns values from table to corresponding fields
         for(TableRow row : table.rows()) {
             float xCord = row.getFloat("x");
             float yCord = row.getFloat("y");
             float width = row.getFloat("w");
             float height = row.getFloat("h");
 
+            // adds a Dot object to the node ArrayList with values taken from file
             nodes.add(new Dot(ui, xCord, yCord, width, height));
         }
     }
