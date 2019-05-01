@@ -202,7 +202,7 @@ public Graph(UI ui, float x, float y, float w, float h, String path) {
 ```
 
 I used the update method of the graph class to make the dots change size when the mouse cursor hovers over them.
-``Java
+```Java
 @Override
     public void update() {
         for(Dot node : nodes) {
