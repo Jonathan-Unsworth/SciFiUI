@@ -3,11 +3,13 @@ package ie.tudublin;
 import processing.core.PVector;
 
 public class Ring implements Renderable {
+    // fields
     private UI ui;
     private PVector pos;
     private float innerRadius;
     private float outsideRadius;
 
+    //Constructor
     public Ring(UI ui, float x, float y, float innerRadius, float outsideRadius) {
         this.ui = ui;
         pos = new PVector(x, y);
@@ -24,6 +26,7 @@ public class Ring implements Renderable {
         float angle = 0;
         float angleStep = 200 / numPoints;
         
+        // Make Dynamic Ring shape
         ui.fill(255, 0, 255);
         ui.beginShape(ui.TRIANGLE_STRIP); 
         for (int i = 0; i <= numPoints; i++) {
