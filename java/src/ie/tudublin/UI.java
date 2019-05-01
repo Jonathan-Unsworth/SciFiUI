@@ -36,6 +36,7 @@ public class UI extends PApplet
 
         // Adding renderable objects to renderables ArrayList
         renderables.add(new DotGrid(this));
+        renderables.add(new Ring(this, width - 80, 80, 50, 25));
         renderables.add(btnBarChart);
         renderables.add(btnPieChart);
         renderables.add(btnGraph);
