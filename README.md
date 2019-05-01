@@ -20,7 +20,7 @@ Pressing said button will have it appear on the screen. Presseing it again will 
 
 # How it works
 Simply put, I relied heavily on polymorphism to realise my goals in this assignment.
-I created two interfaces, Renderable and Clickable, as their names suggest they are responsible for rendering objects and clicking on objects respectively.
+I created two interfaces to model the behaviours of the classes, Renderable and Clickable, as their names suggest they are responsible for rendering objects and clicking on objects respectively.
 
 ```Java
 public interface Renderable {
@@ -36,7 +36,7 @@ public interface Clickable {
 }
 ```
 
-This allowed me use 2 ArrayLists, one for renderables and another for clickables, to store each respectively. This way I could just cycle through each list with a foreach loop to render everything to screen, and apply functionality to certain objects on screen with the mousePressed method.
+This allowed me use 2 ArrayLists in the UI class, one for renderables and another for clickables, to store each respectively. This way I could just cycle through each list with a foreach loop to render everything to the screen, and apply functionality to certain objects on screen with the mousePressed method.
 
 ```Java
 public class UI extends PApplet
@@ -46,33 +46,38 @@ public class UI extends PApplet
 
     public void settings()
     {
-        size(1000, 600);
+        //size(1000, 600);
         // Use fullscreen instead of size to make your interface fullscreen
-        //fullScreen(); 
+        fullScreen(); 
     }
     
     public void setup()
     {
         frameRate(60);
 
+        // One ArrayList for renderable objects, another or clickable objects
         renderables = new ArrayList<>();
         clickables = new ArrayList<>();
 
+        // Declaring Buttons
         Button btnBarChart = new Button(this, (width / 2) - 50, height - 70, 100, 50, "Bar Chart",
                                         new BarChart(this, 10, 10, width - 20, height - 100));
 
-        Button btnPieChart = new Button(this, (width / 3) - 50, height - 70, 100, 50, "Pie Chart",
+        Button btnPieChart = new Button(this, (width / 4) - 50, height - 70, 100, 50, "Pie Chart",
                                         new PieChart(this, 10, 10, width -20, height - 100));
 
-        Button btnGraph = new Button(this, (width / 6) - 50, height - 70, 100, 50, "Graph",
+        Button btnGraph = new Button(this, (width / 2 + (width / 4)) - 50, height - 70, 100, 50, "Graph",
                           new Graph(this, 10, 10, width -20, height - 100, "./data/graph.csv"));
 
+        // Adding renderable objects to renderables ArrayList
         renderables.add(new DotGrid(this));
+        renderables.add(new Ring(this, width - 80, 80, 50, 25));
         renderables.add(btnBarChart);
         renderables.add(btnPieChart);
         renderables.add(btnGraph);
         renderables.add(new Cursor(this));
 
+        // Adding Clickable objects to licakables ArrayList
         clickables.add(btnBarChart);
         clickables.add(btnPieChart);
         clickables.add(btnGraph);
@@ -98,7 +103,7 @@ public class UI extends PApplet
     }
 }
 ```
-I decided I wanted the background to be visually composed of white circles which changes size based on their distance to the mouse cusor, closer circles are bigger. To achieve this I used 2 classes, dot and dotGrid. Dot is used, as it name suggests, to compose a dot as seen in the code snippet below.
+I decided I wanted the background to be visually composed of white circles which changes size based on their distance to the mouse cursor, closer circles are bigger. To achieve this I used 2 classes, dot and dotGrid. Dot is used, as it name suggests, to compose a dot as seen in the code snippet below.
 
 ```Java
 @Override
@@ -134,13 +139,22 @@ I decided I wanted the background to be visually composed of white circles which
     }
 ``` 
 
-DotGrid renders the dots across the whole screen. To do this it takes in an ArrayList of Dots and simply calls the render method of the dot.
+DotGrid renders the dots across the whole screen. To do this it takes in an ArrayList of Dots and simply calls the render method of the dot class.
 
 ```Java
-public DotGrid(UI ui) {
+public class DotGrid implements Renderable {
+    // Fields
+    private UI ui;
+    private List<Dot> dots;
+
+    // Constructor
+    public DotGrid(UI ui) {
         this.ui = ui;
+
+        // Allocating memory for Dot ArrayList
         dots = new ArrayList<>();
 
+        // Adds Dots accross the screen
         for(int i = 10; i < ui.width; i += 10) {
             for(int j = 10; j < ui.height; j += 10) {
                 dots.add(new Dot(ui, i, j));
@@ -186,7 +200,26 @@ public Graph(UI ui, float x, float y, float w, float h, String path) {
         }
     }
 ```
+
+I used the update method of the graph class to make the dots change size when the mouse cursor hovers over them.
+``Java
+@Override
+    public void update() {
+        for(Dot node : nodes) {
+            if(ui.mouseX > node.getX() && ui.mouseX < node.getX() + node.getW() &&
+               ui.mouseY > node.getY() && ui.mouseY < node.getY() + node.getH()) {
+                  float r = ui.random(10, 100);
+                  node.setW(r);
+                  node.setH(r);  
+           }
+        }
+    }
+```
+
+
 Rendering the Barchart and Piechart were simple affairs I simply had them implement the renderable interface and then gave each their own implementation of renderable.
+
+Here is a video of my SciFiUi in action.
 
 [![YouTube](http://img.youtube.com/vi/Ur1WFi6Vo9c/0.jpg)](https://www.youtube.com/watch?v=Ur1WFi6Vo9c&feature=youtu.be)
 
